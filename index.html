@@ -4,1128 +4,564 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Almite | Developer Portfolio</title>
-
-  <meta
-    name="description"
-    content="Almite - Developer, Hosting and Infrastructure enthusiast."
-  >
+  <title>Contact Almite | Developer</title>
 
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      font-family: Inter, Arial, sans-serif;
+    }
+
+    html {
       scroll-behavior: smooth;
     }
 
-    :root {
-      --bg: #060912;
-      --card: #0c1220;
-      --card2: #10182a;
-      --text: #f4f7ff;
-      --muted: #98a5bb;
-      --primary: #5b8cff;
-      --secondary: #7c5cff;
-      --border: rgba(255,255,255,.08);
-    }
-
     body {
-      font-family: Inter, Arial, sans-serif;
+      min-height: 100vh;
+      color: #fff;
+      background: #050816;
+      overflow-x: hidden;
+    }
+
+    /* ================= BACKGROUND ================= */
+
+    .background {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      z-index: -5;
       background:
-        radial-gradient(
-          circle at 15% 15%,
-          rgba(91,140,255,.14),
-          transparent 30%
-        ),
-        radial-gradient(
-          circle at 85% 10%,
-          rgba(124,92,255,.13),
-          transparent 30%
-        ),
-        var(--bg);
-      color: var(--text);
-      line-height: 1.6;
+        radial-gradient(circle at 20% 20%, rgba(0, 140, 255, .18), transparent 30%),
+        radial-gradient(circle at 80% 70%, rgba(130, 50, 255, .18), transparent 30%),
+        #050816;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
+    .grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size: 45px 45px;
+      mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
     }
 
-    .container {
-      width: min(1100px, 92%);
-      margin: auto;
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      animation: float 9s ease-in-out infinite;
     }
 
-    /* =========================
-       NAVBAR
-    ========================= */
+    .orb.one {
+      width: 300px;
+      height: 300px;
+      background: rgba(0, 153, 255, .16);
+      top: 5%;
+      left: -100px;
+    }
+
+    .orb.two {
+      width: 350px;
+      height: 350px;
+      background: rgba(132, 0, 255, .13);
+      right: -120px;
+      bottom: 5%;
+      animation-delay: -4s;
+    }
+
+    @keyframes float {
+      0%,100% {
+        transform: translate(0,0) scale(1);
+      }
+      50% {
+        transform: translate(50px,-40px) scale(1.12);
+      }
+    }
+
+    /* ================= PARTICLES ================= */
+
+    .particles span {
+      position: fixed;
+      width: 3px;
+      height: 3px;
+      background: #6ecbff;
+      border-radius: 50%;
+      opacity: .5;
+      animation: particle 8s linear infinite;
+      z-index: -2;
+    }
+
+    .particles span:nth-child(1){left:10%;animation-delay:0s}
+    .particles span:nth-child(2){left:20%;animation-delay:2s}
+    .particles span:nth-child(3){left:35%;animation-delay:4s}
+    .particles span:nth-child(4){left:50%;animation-delay:1s}
+    .particles span:nth-child(5){left:65%;animation-delay:3s}
+    .particles span:nth-child(6){left:80%;animation-delay:5s}
+    .particles span:nth-child(7){left:92%;animation-delay:2s}
+
+    @keyframes particle {
+      0% {
+        top: 110%;
+        opacity: 0;
+      }
+      20% {
+        opacity: .7;
+      }
+      100% {
+        top: -10%;
+        opacity: 0;
+      }
+    }
+
+    /* ================= NAVBAR ================= */
 
     nav {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 999;
-      background: rgba(6,9,18,.78);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-inner {
-      height: 70px;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1100px, 92%);
+      padding: 14px 22px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
+      background: rgba(10, 15, 35, .62);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 18px;
+      backdrop-filter: blur(18px);
+      z-index: 100;
+      box-shadow: 0 10px 40px rgba(0,0,0,.25);
     }
 
     .logo {
-      font-size: 23px;
+      font-size: 20px;
       font-weight: 800;
+      letter-spacing: .5px;
     }
 
     .logo span {
-      color: var(--primary);
+      color: #4db8ff;
     }
 
-    .nav-links {
-      display: flex;
-      gap: 28px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--muted);
+    nav a {
+      color: #cbd5e1;
+      text-decoration: none;
+      margin-left: 22px;
       font-size: 14px;
-      transition: .25s;
-    }
-
-    .nav-links a:hover {
-      color: white;
-    }
-
-    /* =========================
-       HERO
-    ========================= */
-
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding-top: 80px;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.25fr .75fr;
-      gap: 60px;
-      align-items: center;
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 7px 14px;
-      border-radius: 50px;
-      background: rgba(91,140,255,.08);
-      border: 1px solid rgba(91,140,255,.3);
-      color: #a5bcff;
-      font-size: 13px;
-      margin-bottom: 20px;
-    }
-
-    .hero h1 {
-      font-size: clamp(44px, 7vw, 76px);
-      line-height: 1.05;
-      letter-spacing: -3px;
-      margin-bottom: 22px;
-    }
-
-    .gradient {
-      background: linear-gradient(
-        90deg,
-        #6d9aff,
-        #9b7cff
-      );
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero p {
-      max-width: 650px;
-      color: var(--muted);
-      font-size: 18px;
-      margin-bottom: 30px;
-    }
-
-    .buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .btn {
-      padding: 12px 19px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      font-size: 14px;
-      font-weight: 600;
-      transition: .25s;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-    }
-
-    .btn-primary {
-      border: none;
-      background:
-        linear-gradient(
-          135deg,
-          var(--primary),
-          var(--secondary)
-        );
-    }
-
-    /* PROFILE */
-
-    .profile-card {
-      padding: 35px;
-      text-align: center;
-      border-radius: 24px;
-      background:
-        linear-gradient(
-          145deg,
-          var(--card2),
-          var(--card)
-        );
-      border: 1px solid var(--border);
-      box-shadow: 0 25px 80px rgba(0,0,0,.35);
-    }
-
-    .avatar {
-      width: 125px;
-      height: 125px;
-      margin: auto auto 20px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      font-size: 45px;
-      font-weight: 800;
-      background:
-        linear-gradient(
-          135deg,
-          var(--primary),
-          var(--secondary)
-        );
-      box-shadow:
-        0 0 55px rgba(91,140,255,.25);
-    }
-
-    .profile-card h3 {
-      font-size: 24px;
-    }
-
-    .profile-card p {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .status {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      margin-top: 18px;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #45d483;
-      box-shadow: 0 0 12px #45d483;
-    }
-
-    /* =========================
-       SECTIONS
-    ========================= */
-
-    section {
-      padding: 100px 0;
-    }
-
-    .section-title {
-      margin-bottom: 45px;
-    }
-
-    .section-title span {
-      color: var(--primary);
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    .section-title h2 {
-      margin-top: 8px;
-      font-size: 38px;
-    }
-
-    .section-title p {
-      max-width: 650px;
-      margin-top: 10px;
-      color: var(--muted);
-    }
-
-    /* =========================
-       ABOUT
-    ========================= */
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
-    }
-
-    .card {
-      padding: 28px;
-      border-radius: 18px;
-      background: rgba(12,18,32,.85);
-      border: 1px solid var(--border);
-    }
-
-    .card h3 {
-      margin-bottom: 12px;
-      font-size: 20px;
-    }
-
-    .card p {
-      color: var(--muted);
-    }
-
-    /* =========================
-       SKILLS
-    ========================= */
-
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .skill {
-      padding: 10px 15px;
-      border-radius: 9px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      color: #cdd6e8;
-      font-size: 14px;
-      transition: .25s;
-    }
-
-    .skill:hover {
-      border-color: rgba(91,140,255,.5);
-      transform: translateY(-2px);
-    }
-
-    /* =========================
-       PROJECTS
-    ========================= */
-
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(3,1fr);
-      gap: 20px;
-    }
-
-    .project {
-      padding: 25px;
-      border-radius: 18px;
-      background:
-        linear-gradient(
-          145deg,
-          #10182a,
-          #0b111e
-        );
-      border: 1px solid var(--border);
       transition: .3s;
     }
 
-    .project:hover {
-      transform: translateY(-6px);
-      border-color: rgba(91,140,255,.4);
+    nav a:hover {
+      color: #fff;
+      text-shadow: 0 0 15px #4db8ff;
     }
 
-    .project-icon {
-      width: 45px;
-      height: 45px;
-      display: grid;
-      place-items: center;
-      margin-bottom: 18px;
-      border-radius: 12px;
-      background: rgba(91,140,255,.1);
-      color: #8eaeff;
-      font-size: 20px;
+    /* ================= MAIN ================= */
+
+    main {
+      width: min(1100px, 92%);
+      margin: auto;
+      padding: 160px 0 80px;
     }
 
-    .project h3 {
-      margin-bottom: 10px;
-    }
-
-    .project p {
-      color: var(--muted);
-      font-size: 14px;
-      margin-bottom: 18px;
-    }
-
-    .project a {
-      color: #86a7ff;
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    /* =========================
-       EXPERIENCE
-    ========================= */
-
-    .timeline {
-      padding-left: 25px;
-      border-left: 1px solid rgba(255,255,255,.12);
-    }
-
-    .timeline-item {
-      position: relative;
-      margin-bottom: 35px;
-    }
-
-    .timeline-item::before {
-      content: "";
-      position: absolute;
-      left: -31px;
-      top: 7px;
-      width: 11px;
-      height: 11px;
-      border-radius: 50%;
-      background: var(--primary);
-      box-shadow: 0 0 15px rgba(91,140,255,.7);
-    }
-
-    .timeline-item h3 {
-      font-size: 20px;
-    }
-
-    .timeline-item .date {
-      color: #7e9fff;
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 30px;
+      background: rgba(77,184,255,.08);
+      border: 1px solid rgba(77,184,255,.2);
+      color: #8bd3ff;
       font-size: 13px;
-      margin: 3px 0 8px;
+      margin-bottom: 20px;
+      animation: fadeUp .8s ease;
     }
 
-    .timeline-item p {
-      color: var(--muted);
+    .dot {
+      width: 7px;
+      height: 7px;
+      background: #38ff9b;
+      border-radius: 50%;
+      box-shadow: 0 0 12px #38ff9b;
     }
 
-    /* =========================
-       CONTACT
-    ========================= */
+    h1 {
+      font-size: clamp(42px, 7vw, 78px);
+      line-height: 1;
+      letter-spacing: -3px;
+      margin-bottom: 22px;
+      animation: fadeUp .9s ease;
+    }
 
-    .contact-box {
+    h1 span {
+      background: linear-gradient(90deg,#fff,#55bdff,#9d72ff,#fff);
+      background-size: 300%;
+      -webkit-background-clip: text;
+      color: transparent;
+      animation: gradient 6s linear infinite;
+    }
+
+    @keyframes gradient {
+      0% {background-position:0%}
+      100% {background-position:300%}
+    }
+
+    .intro {
+      max-width: 650px;
+      color: #9ba9bd;
+      font-size: 17px;
+      line-height: 1.8;
+      animation: fadeUp 1s ease;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ================= CONTACT GRID ================= */
+
+    .contact-grid {
+      margin-top: 60px;
       display: grid;
-      grid-template-columns: .85fr 1.15fr;
+      grid-template-columns: .8fr 1.2fr;
       gap: 25px;
     }
 
-    .contact-info,
-    .contact-form {
+    .card {
+      background: rgba(13,20,42,.62);
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: 25px;
       padding: 30px;
-      border-radius: 20px;
-      background: rgba(12,18,32,.88);
-      border: 1px solid var(--border);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 20px 70px rgba(0,0,0,.25);
+      transition: .35s;
+      animation: fadeUp 1.1s ease;
     }
 
-    .contact-info h3 {
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(77,184,255,.35);
+      box-shadow:
+        0 20px 80px rgba(0,0,0,.35),
+        0 0 30px rgba(77,184,255,.08);
+    }
+
+    .card h2 {
       font-size: 25px;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
-    .contact-info > p {
-      color: var(--muted);
-      margin-bottom: 30px;
+    .card-description {
+      color: #8795aa;
+      line-height: 1.7;
+      font-size: 14px;
+      margin-bottom: 25px;
     }
+
+    /* ================= CONTACT ITEMS ================= */
 
     .contact-item {
       display: flex;
       align-items: center;
       gap: 15px;
-      margin: 22px 0;
+      padding: 16px;
+      margin-top: 12px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.035);
+      border: 1px solid rgba(255,255,255,.05);
+      text-decoration: none;
+      color: white;
+      transition: .3s;
     }
 
-    .contact-icon {
+    .contact-item:hover {
+      transform: translateX(7px);
+      background: rgba(77,184,255,.08);
+      border-color: rgba(77,184,255,.25);
+    }
+
+    .icon {
       width: 45px;
       height: 45px;
       display: grid;
       place-items: center;
-      flex-shrink: 0;
-      border-radius: 12px;
-      background: rgba(91,140,255,.1);
+      border-radius: 13px;
+      background: linear-gradient(135deg,rgba(77,184,255,.2),rgba(135,75,255,.15));
+      font-size: 20px;
     }
 
     .contact-item small {
       display: block;
-      color: #718096;
-      font-size: 12px;
-      margin-bottom: 2px;
+      color: #75849a;
+      margin-bottom: 3px;
     }
 
-    .contact-item a {
-      color: #dce5ff;
+    .contact-item strong {
       font-size: 14px;
-      transition: .2s;
+      word-break: break-word;
     }
 
-    .contact-item a:hover {
-      color: #7fa2ff;
+    /* ================= FORM ================= */
+
+    form {
+      display: grid;
+      gap: 16px;
     }
 
-    /* FORM */
-
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .contact-form label {
-      color: #cbd5e7;
+    label {
       font-size: 13px;
-      margin-bottom: 7px;
+      color: #aebbd0;
+      margin-bottom: -8px;
     }
 
-    .contact-form input,
-    .contact-form textarea {
+    input,
+    textarea {
       width: 100%;
-      padding: 13px 14px;
-      margin-bottom: 18px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
+      border: 1px solid rgba(255,255,255,.08);
       outline: none;
-      background: #080e1b;
+      background: rgba(0,0,0,.18);
       color: white;
-      font-family: inherit;
+      border-radius: 14px;
+      padding: 15px 16px;
       font-size: 14px;
+      transition: .3s;
     }
 
-    .contact-form textarea {
+    input::placeholder,
+    textarea::placeholder {
+      color: #59677b;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: #4db8ff;
+      box-shadow: 0 0 0 4px rgba(77,184,255,.08);
+      background: rgba(77,184,255,.035);
+    }
+
+    textarea {
+      min-height: 150px;
       resize: vertical;
-      min-height: 130px;
     }
 
-    .contact-form input:focus,
-    .contact-form textarea:focus {
-      border-color: rgba(91,140,255,.7);
-    }
-
-    .contact-form button {
-      padding: 14px;
+    button {
+      position: relative;
+      overflow: hidden;
       border: none;
-      border-radius: 10px;
       cursor: pointer;
+      padding: 15px 22px;
+      border-radius: 14px;
       color: white;
       font-weight: 700;
       font-size: 14px;
-      background:
-        linear-gradient(
-          135deg,
-          var(--primary),
-          var(--secondary)
-        );
-      transition: .25s;
+      background: linear-gradient(110deg,#168cff,#744cff);
+      box-shadow: 0 10px 35px rgba(50,120,255,.2);
+      transition: .3s;
     }
 
-    .contact-form button:hover {
-      transform: translateY(-2px);
-      opacity: .95;
+    button::before {
+      content: "";
+      position: absolute;
+      width: 80px;
+      height: 200%;
+      top: -50%;
+      left: -100px;
+      background: rgba(255,255,255,.25);
+      transform: rotate(20deg);
+      transition: .6s;
     }
 
-    /* =========================
-       FOOTER
-    ========================= */
+    button:hover::before {
+      left: 120%;
+    }
+
+    button:hover {
+      transform: translateY(-3px);
+      box-shadow:
+        0 15px 40px rgba(50,120,255,.35),
+        0 0 25px rgba(100,80,255,.15);
+    }
+
+    button:active {
+      transform: scale(.98);
+    }
+
+    /* ================= FOOTER ================= */
 
     footer {
-      padding: 30px 0;
-      border-top: 1px solid var(--border);
-      color: #718096;
       text-align: center;
+      color: #64748b;
+      padding: 30px 20px 50px;
       font-size: 13px;
     }
 
-    /* =========================
-       MOBILE
-    ========================= */
+    footer span {
+      color: #8bcfff;
+    }
+
+    /* ================= MOBILE ================= */
 
     @media (max-width: 800px) {
+      nav {
+        padding: 13px 16px;
+      }
 
-      .nav-links {
+      nav .links {
         display: none;
       }
 
-      .hero-grid {
-        grid-template-columns: 1fr;
-        text-align: center;
+      main {
+        padding-top: 130px;
       }
 
-      .hero p {
-        margin-left: auto;
-        margin-right: auto;
+      h1 {
+        letter-spacing: -2px;
       }
 
-      .buttons {
-        justify-content: center;
-      }
-
-      .about-grid,
-      .projects,
-      .contact-box {
+      .contact-grid {
         grid-template-columns: 1fr;
       }
 
-      .profile-card {
-        max-width: 360px;
-        margin: auto;
+      .card {
+        padding: 22px;
+      }
+    }
+
+    @media (max-width: 450px) {
+      .intro {
+        font-size: 15px;
       }
 
-      section {
-        padding: 75px 0;
-      }
-
-      .section-title h2 {
-        font-size: 32px;
+      .contact-item strong {
+        font-size: 13px;
       }
     }
   </style>
 </head>
 
-
 <body>
 
-  <!-- =========================
-       NAVBAR
-  ========================= -->
+  <!-- Animated Background -->
+  <div class="background">
+    <div class="grid"></div>
+    <div class="orb one"></div>
+    <div class="orb two"></div>
+  </div>
 
+  <!-- Floating Particles -->
+  <div class="particles">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <!-- Navigation -->
   <nav>
-    <div class="container nav-inner">
+    <div class="logo">Almite<span>.</span></div>
 
-      <a href="#" class="logo">
-        Almite<span>.</span>
-      </a>
-
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-
+    <div class="links">
+      <a href="#contact">Contact</a>
+      <a href="#info">Info</a>
     </div>
   </nav>
 
+  <main>
 
-  <!-- =========================
-       HERO
-  ========================= -->
-
-  <section class="hero">
-
-    <div class="container hero-grid">
-
-      <div>
-
-        <span class="badge">
-          Available for opportunities
-        </span>
-
-        <h1>
-          Hi, I'm
-          <span class="gradient">Almite.</span>
-        </h1>
-
-        <p>
-          Developer and infrastructure enthusiast focused on
-          web development, hosting systems, VPS infrastructure
-          and Minecraft server technology.
-        </p>
-
-        <div class="buttons">
-
-          <a
-            href="#projects"
-            class="btn btn-primary">
-            View Projects
-          </a>
-
-          <a
-            href="https://github.com/almiteextra2"
-            target="_blank"
-            class="btn">
-            GitHub
-          </a>
-
-          <a
-            href="#contact"
-            class="btn">
-            Contact Me
-          </a>
-
-        </div>
-
-      </div>
-
-
-      <div class="profile-card">
-
-        <div class="avatar">
-          A
-        </div>
-
-        <h3>Almite</h3>
-
-        <p>
-          Developer • Hosting • Infrastructure
-        </p>
-
-        <div class="status">
-          <span class="dot"></span>
-          Building & Learning
-        </div>
-
-      </div>
-
+    <div class="badge">
+      <div class="dot"></div>
+      Available for opportunities
     </div>
 
-  </section>
+    <h1>
+      Let's build something<br>
+      <span>great together.</span>
+    </h1>
 
+    <p class="intro">
+      Have a project, hosting idea, website, or just want to talk?
+      Send me a message and I'll get back to you as soon as possible.
+    </p>
 
-  <!-- =========================
-       ABOUT
-  ========================= -->
+    <section class="contact-grid" id="contact">
 
-  <section id="about">
+      <!-- Contact Information -->
+      <div class="card" id="info">
 
-    <div class="container">
+        <h2>Get in touch</h2>
 
-      <div class="section-title">
-
-        <span>About Me</span>
-
-        <h2>
-          Building things that work.
-        </h2>
-
-        <p>
-          I enjoy building websites, hosting platforms
-          and infrastructure projects while learning
-          new technologies and improving my skills.
+        <p class="card-description">
+          I'm interested in web development, hosting infrastructure,
+          Minecraft hosting, VPS systems and interesting tech projects.
         </p>
 
-      </div>
+        <a class="contact-item"
+           href="mailto:almiteextra2@gmail.com">
 
+          <div class="icon">✉️</div>
 
-      <div class="about-grid">
+          <div>
+            <small>Email</small>
+            <strong>almiteextra2@gmail.com</strong>
+          </div>
 
-        <div class="card">
+        </a>
 
-          <h3>
-            What I Do
-          </h3>
+        <a class="contact-item"
+           href="https://github.com/almiteextra2"
+           target="_blank">
 
-          <p>
-            I work with web applications, Linux servers,
-            VPS environments, Minecraft hosting and
-            cloud-based infrastructure.
-          </p>
+          <div class="icon">⌘</div>
 
-        </div>
+          <div>
+            <small>GitHub</small>
+            <strong>github.com/almiteextra2</strong>
+          </div>
 
+        </a>
 
-        <div class="card">
+        <a class="contact-item"
+           href="https://gp.eagleclouds.bond/"
+           target="_blank">
 
-          <h3>
-            What I Like
-          </h3>
+          <div class="icon">☁️</div>
 
-          <p>
-            I enjoy experimenting with servers, automation,
-            networking, hosting panels and modern web technologies.
-          </p>
+          <div>
+            <small>EagleClouds</small>
+            <strong>Hosting Infrastructure</strong>
+          </div>
 
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
-       SKILLS
-  ========================= -->
-
-  <section id="skills">
-
-    <div class="container">
-
-      <div class="section-title">
-
-        <span>Skills</span>
-
-        <h2>
-          Technologies I Work With
-        </h2>
+        </a>
 
       </div>
 
+      <!-- Contact Form -->
+      <div class="card">
 
-      <div class="skills">
+        <h2>Send a message</h2>
 
-        <div class="skill">HTML</div>
-        <div class="skill">CSS</div>
-        <div class="skill">JavaScript</div>
-        <div class="skill">Node.js</div>
-        <div class="skill">Git</div>
-        <div class="skill">GitHub</div>
-        <div class="skill">Linux</div>
-        <div class="skill">Docker</div>
-        <div class="skill">Cloudflare</div>
-        <div class="skill">Pterodactyl</div>
-        <div class="skill">Minecraft Hosting</div>
-        <div class="skill">VPS Infrastructure</div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
-       PROJECTS
-  ========================= -->
-
-  <section id="projects">
-
-    <div class="container">
-
-      <div class="section-title">
-
-        <span>Projects</span>
-
-        <h2>
-          Things I've Worked On
-        </h2>
-
-        <p>
-          A selection of projects and infrastructure work.
+        <p class="card-description">
+          Fill out the form below. Your message will be sent directly
+          to my email.
         </p>
-
-      </div>
-
-
-      <div class="projects">
-
-        <!-- EagleClouds -->
-
-        <div class="project">
-
-          <div class="project-icon">
-            ☁
-          </div>
-
-          <h3>
-            EagleClouds
-          </h3>
-
-          <p>
-            Hosting infrastructure focused on VPS and
-            Minecraft server hosting, management and automation.
-          </p>
-
-          <a
-            href="https://gp.eagleclouds.bond/"
-            target="_blank">
-            Visit Panel →
-          </a>
-
-        </div>
-
-
-        <!-- Web -->
-
-        <div class="project">
-
-          <div class="project-icon">
-            ⌘
-          </div>
-
-          <h3>
-            Web Development
-          </h3>
-
-          <p>
-            Responsive websites and web applications built
-            with HTML, CSS, JavaScript and Node.js.
-          </p>
-
-          <a
-            href="https://github.com/almiteextra2"
-            target="_blank">
-            View GitHub →
-          </a>
-
-        </div>
-
-
-        <!-- Infrastructure -->
-
-        <div class="project">
-
-          <div class="project-icon">
-            ⚙
-          </div>
-
-          <h3>
-            Server Infrastructure
-          </h3>
-
-          <p>
-            Linux server environments, Docker deployments,
-            networking, Cloudflare and hosting infrastructure.
-          </p>
-
-          <a
-            href="https://github.com/almiteextra2"
-            target="_blank">
-            View Projects →
-          </a>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
-       EXPERIENCE
-  ========================= -->
-
-  <section id="experience">
-
-    <div class="container">
-
-      <div class="section-title">
-
-        <span>Experience</span>
-
-        <h2>
-          My Journey
-        </h2>
-
-      </div>
-
-
-      <div class="timeline">
-
-        <div class="timeline-item">
-
-          <h3>
-            EagleClouds
-          </h3>
-
-          <div class="date">
-            Hosting & Infrastructure
-          </div>
-
-          <p>
-            Worked on hosting infrastructure, Minecraft
-            servers, VPS environments, Pterodactyl panels
-            and related systems.
-          </p>
-
-        </div>
-
-
-        <div class="timeline-item">
-
-          <h3>
-            Web & Application Development
-          </h3>
-
-          <div class="date">
-            Development
-          </div>
-
-          <p>
-            Built and maintained web projects using
-            modern development tools and technologies.
-          </p>
-
-        </div>
-
-
-        <div class="timeline-item">
-
-          <h3>
-            Continuous Learning
-          </h3>
-
-          <div class="date">
-            Ongoing
-          </div>
-
-          <p>
-            Continuously learning about Linux, networking,
-            cloud infrastructure, development and automation.
-          </p>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
-       CONTACT
-  ========================= -->
-
-  <section id="contact">
-
-    <div class="container">
-
-      <div class="section-title">
-
-        <span>Contact</span>
-
-        <h2>
-          Let's Talk.
-        </h2>
-
-        <p>
-          Have a project, opportunity or question?
-          Feel free to get in touch.
-        </p>
-
-      </div>
-
-
-      <div class="contact-box">
-
-
-        <!-- CONTACT INFORMATION -->
-
-        <div class="contact-info">
-
-          <h3>
-            Get in touch
-          </h3>
-
-          <p>
-            I'm open to discussing projects, opportunities,
-            collaborations and interesting ideas.
-          </p>
-
-
-          <!-- EMAIL -->
-
-          <div class="contact-item">
-
-            <div class="contact-icon">
-              ✉️
-            </div>
-
-            <div>
-
-              <small>
-                Email
-              </small>
-
-              <a href="mailto:almiteextra2@gmail.com">
-                almiteextra2@gmail.com
-              </a>
-
-            </div>
-
-          </div>
-
-
-          <!-- GITHUB -->
-
-          <div class="contact-item">
-
-            <div class="contact-icon">
-              💻
-            </div>
-
-            <div>
-
-              <small>
-                GitHub
-              </small>
-
-              <a
-                href="https://github.com/almiteextra2"
-                target="_blank">
-                github.com/almiteextra2
-              </a>
-
-            </div>
-
-          </div>
-
-
-          <!-- EAGLECLOUDS -->
-
-          <div class="contact-item">
-
-            <div class="contact-icon">
-              ☁️
-            </div>
-
-            <div>
-
-              <small>
-                Project
-              </small>
-
-              <a
-                href="https://gp.eagleclouds.bond/"
-                target="_blank">
-                EagleClouds
-              </a>
-
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <!-- CONTACT FORM -->
 
         <form
-          class="contact-form"
           action="https://formsubmit.co/almiteextra2@gmail.com"
           method="POST">
-
-
-          <!-- FormSubmit Settings -->
 
           <input
             type="hidden"
@@ -1142,49 +578,31 @@
             name="_template"
             value="table">
 
-
-          <!-- NAME -->
-
-          <label for="name">
-            Name
-          </label>
+          <label for="name">Your Name</label>
 
           <input
             id="name"
             type="text"
             name="name"
-            placeholder="Your name"
+            placeholder="Enter your name"
             required>
 
-
-          <!-- EMAIL -->
-
-          <label for="email">
-            Email
-          </label>
+          <label for="email">Your Email</label>
 
           <input
             id="email"
             type="email"
             name="email"
-            placeholder="your@email.com"
+            placeholder="you@example.com"
             required>
 
-
-          <!-- MESSAGE -->
-
-          <label for="message">
-            Message
-          </label>
+          <label for="message">Message</label>
 
           <textarea
             id="message"
             name="message"
             placeholder="Write your message..."
             required></textarea>
-
-
-          <!-- BUTTON -->
 
           <button type="submit">
             Send Message →
@@ -1194,25 +612,13 @@
 
       </div>
 
-    </div>
+    </section>
 
-  </section>
-
-
-  <!-- =========================
-       FOOTER
-  ========================= -->
+  </main>
 
   <footer>
-
-    <div class="container">
-
-      © 2026 Almite. All rights reserved.
-
-    </div>
-
+    © 2026 <span>Almite</span>. Built with passion & code.
   </footer>
-
 
 </body>
 </html>
