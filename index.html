@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Almite — Contact</title>
 
 <style>
@@ -17,15 +17,9 @@
   --border:rgba(255,255,255,.12);
 }
 
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
-html{
-  scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth}
 
 body{
   font-family:Inter,Arial,sans-serif;
@@ -34,8 +28,6 @@ body{
   min-height:100vh;
   overflow-x:hidden;
 }
-
-/* ================= BACKGROUND ================= */
 
 .background{
   position:fixed;
@@ -46,15 +38,15 @@ body{
     url("https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=2200&q=85")
     center/cover no-repeat;
   transform:scale(1.04);
-  animation:backgroundMove 18s ease-in-out infinite alternate;
+  animation:bgmove 18s ease-in-out infinite alternate;
 }
 
-@keyframes backgroundMove{
-  from{transform:scale(1.04);}
-  to{transform:scale(1.12);}
+@keyframes bgmove{
+  from{transform:scale(1.04)}
+  to{transform:scale(1.12)}
 }
 
-.background::after{
+.background:after{
   content:"";
   position:absolute;
   inset:0;
@@ -62,7 +54,6 @@ body{
     radial-gradient(circle at 20% 30%,var(--accent),transparent 30%),
     radial-gradient(circle at 80% 70%,var(--accent2),transparent 25%);
   opacity:.13;
-  mix-blend-mode:screen;
 }
 
 .glow{
@@ -80,61 +71,13 @@ body{
   background:var(--accent);
   top:-150px;
   left:-100px;
-  animation:float1 10s infinite alternate ease-in-out;
 }
 
 .glow.two{
   background:var(--accent2);
   right:-150px;
   bottom:-150px;
-  animation:float2 12s infinite alternate ease-in-out;
 }
-
-@keyframes float1{
-  to{transform:translate(180px,120px);}
-}
-
-@keyframes float2{
-  to{transform:translate(-150px,-100px);}
-}
-
-.particles{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:-2;
-  overflow:hidden;
-}
-
-.particles span{
-  position:absolute;
-  width:4px;
-  height:4px;
-  border-radius:50%;
-  background:white;
-  opacity:.35;
-  animation:particle 10s linear infinite;
-}
-
-.particles span:nth-child(1){left:10%;animation-delay:0s;}
-.particles span:nth-child(2){left:22%;animation-delay:2s;}
-.particles span:nth-child(3){left:35%;animation-delay:4s;}
-.particles span:nth-child(4){left:48%;animation-delay:1s;}
-.particles span:nth-child(5){left:60%;animation-delay:5s;}
-.particles span:nth-child(6){left:72%;animation-delay:3s;}
-.particles span:nth-child(7){left:84%;animation-delay:7s;}
-.particles span:nth-child(8){left:94%;animation-delay:6s;}
-
-@keyframes particle{
-  from{
-    transform:translateY(110vh) scale(.5);
-  }
-  to{
-    transform:translateY(-10vh) scale(1.5);
-  }
-}
-
-/* ================= NAVBAR ================= */
 
 nav{
   position:fixed;
@@ -147,27 +90,24 @@ nav{
   align-items:center;
   padding:18px 6%;
   backdrop-filter:blur(18px);
-  background:rgba(5,5,10,.45);
+  background:rgba(5,5,10,.55);
   border-bottom:1px solid rgba(255,255,255,.08);
 }
 
 .logo{
   font-size:23px;
   font-weight:900;
-  letter-spacing:-1px;
 }
 
-.logo span{
-  color:var(--accent);
-}
+.logo span{color:var(--accent)}
 
 .nav-buttons{
   display:flex;
   gap:10px;
+  align-items:center;
 }
 
-button,
-.btn{
+button,.btn{
   border:0;
   cursor:pointer;
   color:white;
@@ -188,13 +128,10 @@ button,
   border:1px solid var(--border);
 }
 
-button:hover,
-.btn:hover{
+button:hover,.btn:hover{
   transform:translateY(-2px);
   filter:brightness(1.12);
 }
-
-/* ================= MAIN ================= */
 
 main{
   width:min(1100px,92%);
@@ -220,7 +157,7 @@ main{
   margin-bottom:25px;
 }
 
-.badge::before{
+.badge:before{
   content:"";
   display:inline-block;
   width:8px;
@@ -228,7 +165,6 @@ main{
   background:#22c55e;
   border-radius:50%;
   margin-right:8px;
-  box-shadow:0 0 15px #22c55e;
 }
 
 .hero h1{
@@ -239,12 +175,6 @@ main{
   background:linear-gradient(90deg,#fff,var(--accent2),var(--accent));
   -webkit-background-clip:text;
   color:transparent;
-  background-size:200%;
-  animation:gradient 5s linear infinite;
-}
-
-@keyframes gradient{
-  to{background-position:200% center;}
 }
 
 .hero p{
@@ -261,11 +191,7 @@ main{
   margin-top:35px;
 }
 
-/* ================= CONTACT ================= */
-
-.section{
-  padding:80px 0;
-}
+.section{padding:80px 0}
 
 .section-title{
   font-size:42px;
@@ -277,19 +203,19 @@ main{
   margin-bottom:35px;
 }
 
-.contact-grid{
-  display:grid;
-  grid-template-columns:.8fr 1.2fr;
-  gap:22px;
-}
-
-.card{
+.card,.admin-card{
   background:var(--card);
   border:1px solid var(--border);
   border-radius:25px;
   padding:30px;
   backdrop-filter:blur(20px);
   box-shadow:0 20px 80px rgba(0,0,0,.25);
+}
+
+.contact-grid{
+  display:grid;
+  grid-template-columns:.8fr 1.2fr;
+  gap:22px;
 }
 
 .contact-info{
@@ -311,21 +237,63 @@ main{
   margin-bottom:7px;
 }
 
-.info-box strong{
+.info-box strong{word-break:break-word}
+
+.chat-box{
+  height:430px;
+  display:flex;
+  flex-direction:column;
+}
+
+.messages{
+  flex:1;
+  overflow:auto;
+  padding:5px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin-bottom:15px;
+}
+
+.message{
+  max-width:80%;
+  padding:12px 15px;
+  border-radius:16px;
+  line-height:1.5;
+  white-space:pre-wrap;
   word-break:break-word;
 }
 
-form{
-  display:flex;
-  flex-direction:column;
-  gap:15px;
+.message.user{
+  align-self:flex-end;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
 }
 
-input,
-textarea,
-select{
+.message.admin{
+  align-self:flex-start;
+  background:rgba(255,255,255,.08);
+  border:1px solid var(--border);
+}
+
+.message small{
+  display:block;
+  opacity:.55;
+  font-size:10px;
+  margin-top:5px;
+}
+
+.chat-form{
+  display:flex;
+  gap:10px;
+}
+
+.chat-form input{
+  flex:1;
+}
+
+input,textarea{
   width:100%;
-  padding:15px 16px;
+  padding:14px 16px;
   color:white;
   background:rgba(0,0,0,.3);
   border:1px solid var(--border);
@@ -334,19 +302,24 @@ select{
   font-size:15px;
 }
 
-input:focus,
-textarea:focus,
-select:focus{
-  border-color:var(--accent);
-  box-shadow:0 0 0 3px rgba(124,58,237,.12);
-}
-
 textarea{
-  min-height:160px;
+  min-height:100px;
   resize:vertical;
 }
 
-/* ================= MODAL ================= */
+input:focus,textarea:focus{
+  border-color:var(--accent);
+}
+
+.login-required{
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  flex-direction:column;
+  gap:15px;
+}
 
 .modal{
   position:fixed;
@@ -360,29 +333,17 @@ textarea{
   backdrop-filter:blur(12px);
 }
 
-.modal.show{
-  display:flex;
-}
+.modal.show{display:flex}
 
 .modal-box{
-  width:min(460px,100%);
-  background:rgba(10,10,18,.94);
+  width:min(480px,100%);
+  max-height:90vh;
+  overflow:auto;
+  background:rgba(10,10,18,.96);
   border:1px solid var(--border);
   border-radius:25px;
   padding:28px;
   box-shadow:0 30px 100px rgba(0,0,0,.6);
-  animation:modalIn .25s ease;
-}
-
-@keyframes modalIn{
-  from{
-    opacity:0;
-    transform:translateY(20px) scale(.96);
-  }
-  to{
-    opacity:1;
-    transform:none;
-  }
 }
 
 .modal-head{
@@ -414,12 +375,11 @@ textarea{
 
 .auth-form{
   display:none;
+  flex-direction:column;
   gap:13px;
 }
 
-.auth-form.active{
-  display:flex;
-}
+.auth-form.active{display:flex}
 
 .auth-message{
   min-height:20px;
@@ -427,27 +387,11 @@ textarea{
   color:#f87171;
 }
 
-.success{
-  color:#4ade80;
-}
+.success{color:#4ade80}
 
-/* ================= ADMIN ================= */
+.admin-section{display:none}
 
-.admin-section{
-  display:none;
-}
-
-.admin-section.show{
-  display:block;
-}
-
-.admin-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:15px;
-  margin-bottom:20px;
-}
+.admin-section.show{display:block}
 
 .admin-grid{
   display:grid;
@@ -455,16 +399,7 @@ textarea{
   gap:20px;
 }
 
-.admin-card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:22px;
-  padding:24px;
-}
-
-.admin-card h3{
-  margin-bottom:18px;
-}
+.admin-card h3{margin-bottom:18px}
 
 .admin-card label{
   display:block;
@@ -478,10 +413,75 @@ textarea{
   gap:10px;
 }
 
-.color-row input[type="color"]{
+.color-row input[type=color]{
   width:65px;
   height:48px;
   padding:4px;
+}
+
+.ticket-layout{
+  display:grid;
+  grid-template-columns:280px 1fr;
+  gap:15px;
+}
+
+.ticket-list{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  max-height:430px;
+  overflow:auto;
+}
+
+.ticket{
+  padding:13px;
+  border-radius:12px;
+  background:rgba(255,255,255,.05);
+  border:1px solid transparent;
+  cursor:pointer;
+}
+
+.ticket.active{
+  border-color:var(--accent);
+  background:rgba(124,58,237,.12);
+}
+
+.ticket small{
+  display:block;
+  color:#a1a1aa;
+  margin-top:4px;
+}
+
+.admin-chat{
+  height:430px;
+  display:flex;
+  flex-direction:column;
+}
+
+.admin-messages{
+  flex:1;
+  overflow:auto;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin-bottom:12px;
+}
+
+.admin-message{
+  max-width:80%;
+  padding:12px 15px;
+  border-radius:15px;
+  white-space:pre-wrap;
+}
+
+.admin-message.customer{
+  align-self:flex-start;
+  background:rgba(255,255,255,.07);
+}
+
+.admin-message.admin{
+  align-self:flex-end;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
 }
 
 .user-list{
@@ -506,10 +506,6 @@ textarea{
   margin-top:3px;
 }
 
-.danger{
-  background:#dc2626;
-}
-
 .admin-badge{
   font-size:11px;
   padding:4px 8px;
@@ -518,67 +514,28 @@ textarea{
   color:#c4b5fd;
 }
 
+.danger{background:#dc2626}
+
 footer{
   text-align:center;
   padding:50px 20px;
   color:#71717a;
 }
 
-/* ================= RESPONSIVE ================= */
-
 @media(max-width:800px){
-  .contact-grid,
-  .admin-grid{
+  .contact-grid,.admin-grid,.ticket-layout{
     grid-template-columns:1fr;
   }
 
-  .hero h1{
-    letter-spacing:-3px;
-  }
+  .hero h1{letter-spacing:-3px}
 
-  .hero-actions{
-    flex-wrap:wrap;
-  }
+  .hero-actions{flex-wrap:wrap}
 
-  nav{
-    padding:15px 4%;
-  }
-
-  .nav-buttons{
-    gap:6px;
-  }
+  nav{padding:15px 4%}
 
   button,.btn{
     padding:10px 13px;
     font-size:13px;
-  }
-}
-
-@media(max-width:500px){
-  .logo{
-    font-size:18px;
-  }
-
-  .hero{
-    min-height:80vh;
-  }
-
-  .hero p{
-    font-size:15px;
-  }
-
-  .card,
-  .admin-card{
-    padding:20px;
-  }
-}
-
-@media(prefers-reduced-motion:reduce){
-  *,
-  *::before,
-  *::after{
-    animation:none!important;
-    scroll-behavior:auto!important;
   }
 }
 </style>
@@ -587,21 +544,11 @@ footer{
 <body>
 
 <div class="background"></div>
-
 <div class="glow one"></div>
 <div class="glow two"></div>
 
-<div class="particles">
-  <span></span><span></span><span></span><span></span>
-  <span></span><span></span><span></span><span></span>
-</div>
-
-<!-- ================= NAVBAR ================= -->
-
 <nav>
-  <div class="logo">
-    <span>A</span> Almite.
-  </div>
+  <div class="logo"><span>A</span> Almite.</div>
 
   <div class="nav-buttons">
     <a href="#contact" class="btn btn-secondary" id="navContactBtn">
@@ -622,8 +569,6 @@ footer{
   </div>
 </nav>
 
-<!-- ================= MAIN ================= -->
-
 <main>
 
 <section class="hero">
@@ -643,17 +588,16 @@ footer{
 
   <div class="hero-actions">
 
-    <a
-      href="#contact"
-      class="btn btn-primary"
-      id="heroContactBtn">
+    <a href="#contact"
+       class="btn btn-primary"
+       id="heroContactBtn">
       Contact Me
     </a>
 
     <button
       class="btn btn-secondary"
-      onclick="openAuth()"
-      id="heroLoginBtn">
+      id="heroLoginBtn"
+      onclick="openAuth()">
       Login
     </button>
 
@@ -661,16 +605,13 @@ footer{
 
 </section>
 
-<!-- ================= CONTACT ================= -->
 
 <section class="section" id="contact">
 
-  <h2 class="section-title">
-    Get in touch
-  </h2>
+  <h2 class="section-title">Support</h2>
 
   <p class="section-subtitle">
-    Send your message directly.
+    Contact me directly through this website.
   </p>
 
   <div class="contact-grid">
@@ -691,55 +632,52 @@ footer{
         </strong>
       </div>
 
+      <div class="info-box">
+        <small>Support</small>
+        <strong>
+          Login and send a message. Your conversation stays here.
+        </strong>
+      </div>
+
     </div>
 
-    <div class="card">
+    <div class="card chat-box" id="customerChat">
 
-      <form
-        action="https://formsubmit.co/almiteextra2@gmail.com"
-        method="POST">
-
-        <input
-          type="hidden"
-          name="_subject"
-          value="New Message From Almite Website">
-
-        <input
-          type="hidden"
-          name="_captcha"
-          value="false">
-
-        <input
-          type="hidden"
-          name="_template"
-          value="table">
-
-        <input
-          type="hidden"
-          name="_next"
-          value="https://contact.eagleclouds.bond/">
-
-        <input
-          type="text"
-          name="name"
-          placeholder="Your Name"
-          required>
-
-        <input
-          type="email"
-          name="email"
-          placeholder="Your Email"
-          required>
-
-        <textarea
-          name="message"
-          placeholder="Write your message..."
-          required></textarea>
+      <div class="login-required" id="loginRequired">
+        <h3>Login required</h3>
+        <p style="color:var(--muted)">
+          Login or create an account to contact me.
+        </p>
 
         <button
-          type="submit"
           class="btn btn-primary"
-          id="submitButton">
+          onclick="openAuth()">
+          Login / Sign Up
+        </button>
+      </div>
+
+      <div
+        class="messages"
+        id="customerMessages"
+        style="display:none">
+      </div>
+
+      <form
+        class="chat-form"
+        id="customerChatForm"
+        onsubmit="sendCustomerMessage(event)"
+        style="display:none">
+
+        <input
+          id="customerMessage"
+          placeholder="Write your message..."
+          autocomplete="off"
+          required>
+
+        <button
+          class="btn btn-primary"
+          id="submitButton"
+          type="submit">
           Send Message
         </button>
 
@@ -751,11 +689,13 @@ footer{
 
 </section>
 
-<!-- ================= ADMIN PANEL ================= -->
 
-<section class="section admin-section" id="adminPanel">
+<section
+  class="section admin-section"
+  id="adminPanel">
 
-  <div class="admin-header">
+  <div class="admin-header"
+       style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
 
     <div>
       <h2 class="section-title">
@@ -763,60 +703,40 @@ footer{
       </h2>
 
       <p class="section-subtitle">
-        Manage your website from here.
+        Manage your website and customer support.
       </p>
     </div>
 
-    <button
-      class="btn danger"
-      onclick="logout()">
+    <button class="btn danger" onclick="logout()">
       Logout
     </button>
 
   </div>
 
-  <div class="admin-grid">
 
-    <!-- WEBSITE SETTINGS -->
+  <div class="admin-grid">
 
     <div class="admin-card">
 
       <h3>🎨 Website Settings</h3>
 
       <label>Hero Status</label>
-      <input
-        id="setStatus"
-        type="text"
-        placeholder="Available for opportunities">
+      <input id="setStatus">
 
       <label>Hero Title</label>
-      <input
-        id="setTitle"
-        type="text"
-        placeholder="Let's build something great.">
+      <input id="setTitle">
 
       <label>Hero Description</label>
-      <textarea
-        id="setDescription"
-        placeholder="Website description"></textarea>
+      <textarea id="setDescription"></textarea>
 
       <label>Contact Email</label>
-      <input
-        id="setEmail"
-        type="email"
-        placeholder="your@email.com">
+      <input id="setEmail" type="email">
 
       <label>Contact Button Text</label>
-      <input
-        id="setContactText"
-        type="text"
-        placeholder="Contact Me">
+      <input id="setContactText">
 
       <label>Login Button Text</label>
-      <input
-        id="setLoginText"
-        type="text"
-        placeholder="Login">
+      <input id="setLoginText">
 
       <button
         class="btn btn-primary"
@@ -827,7 +747,6 @@ footer{
 
     </div>
 
-    <!-- COLORS -->
 
     <div class="admin-card">
 
@@ -836,35 +755,19 @@ footer{
       <label>Primary Color</label>
 
       <div class="color-row">
-        <input
-          id="primaryColor"
-          type="color">
-
-        <input
-          id="primaryColorText"
-          type="text"
-          placeholder="#7c3aed">
+        <input id="primaryColor" type="color">
+        <input id="primaryColorText">
       </div>
 
       <label>Secondary Color</label>
 
       <div class="color-row">
-        <input
-          id="secondaryColor"
-          type="color">
-
-        <input
-          id="secondaryColorText"
-          type="text"
-          placeholder="#06b6d4">
+        <input id="secondaryColor" type="color">
+        <input id="secondaryColorText">
       </div>
 
       <label>Background Image URL</label>
-
-      <input
-        id="backgroundUrl"
-        type="text"
-        placeholder="https://example.com/background.jpg">
+      <input id="backgroundUrl">
 
       <button
         class="btn btn-primary"
@@ -882,29 +785,19 @@ footer{
 
     </div>
 
-    <!-- BUTTONS -->
 
     <div class="admin-card">
 
       <h3>🔘 Button Controls</h3>
 
       <label>Hero Contact Button</label>
-      <input
-        id="buttonHero"
-        type="text"
-        placeholder="Contact Me">
+      <input id="buttonHero">
 
-      <label>Form Submit Button</label>
-      <input
-        id="buttonSubmit"
-        type="text"
-        placeholder="Send Message">
+      <label>Send Message Button</label>
+      <input id="buttonSubmit">
 
       <label>Navbar Contact Button</label>
-      <input
-        id="buttonNavContact"
-        type="text"
-        placeholder="Contact">
+      <input id="buttonNavContact">
 
       <button
         class="btn btn-primary"
@@ -915,29 +808,19 @@ footer{
 
     </div>
 
-    <!-- ADD ADMIN -->
 
     <div class="admin-card">
 
-      <h3>👑 Add New Admin</h3>
+      <h3>👑 Create Admin</h3>
 
-      <label>Admin Username</label>
-      <input
-        id="newAdminUsername"
-        type="text"
-        placeholder="newadmin">
+      <label>Username</label>
+      <input id="newAdminUsername">
 
-      <label>Admin Email</label>
-      <input
-        id="newAdminEmail"
-        type="email"
-        placeholder="admin@email.com">
+      <label>Email</label>
+      <input id="newAdminEmail" type="email">
 
-      <label>Admin Password</label>
-      <input
-        id="newAdminPassword"
-        type="password"
-        placeholder="Password">
+      <label>Password</label>
+      <input id="newAdminPassword" type="password">
 
       <button
         class="btn btn-primary"
@@ -946,23 +829,64 @@ footer{
         Create Admin
       </button>
 
-      <p
-        id="adminMessage"
-        class="auth-message"
-        style="margin-top:12px">
+      <p id="adminMessage"
+         class="auth-message"
+         style="margin-top:12px">
       </p>
 
     </div>
 
-    <!-- USERS -->
 
-    <div class="admin-card" style="grid-column:1/-1">
+    <div class="admin-card"
+         style="grid-column:1/-1">
+
+      <h3>🎫 Customer Tickets</h3>
+
+      <div class="ticket-layout">
+
+        <div
+          class="ticket-list"
+          id="ticketList">
+        </div>
+
+        <div class="admin-chat">
+
+          <div
+            id="adminMessages"
+            class="admin-messages">
+          </div>
+
+          <form
+            class="chat-form"
+            onsubmit="sendAdminReply(event)">
+
+            <input
+              id="adminReply"
+              placeholder="Reply to customer..."
+              required>
+
+            <button
+              class="btn btn-primary"
+              type="submit">
+              Reply
+            </button>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="admin-card"
+         style="grid-column:1/-1">
 
       <h3>👥 Accounts</h3>
 
-      <div
-        class="user-list"
-        id="userList">
+      <div id="userList"
+           class="user-list">
       </div>
 
     </div>
@@ -977,7 +901,6 @@ footer{
   © <span id="year"></span> Almite. All rights reserved.
 </footer>
 
-<!-- ================= AUTH MODAL ================= -->
 
 <div
   class="modal"
@@ -1018,7 +941,6 @@ footer{
 
     </div>
 
-    <!-- LOGIN -->
 
     <form
       class="auth-form active"
@@ -1026,9 +948,8 @@ footer{
       onsubmit="login(event)">
 
       <input
-        id="loginUsername"
-        type="text"
-        placeholder="Username"
+        id="loginIdentifier"
+        placeholder="Username or Email"
         required>
 
       <input
@@ -1043,14 +964,12 @@ footer{
         Login
       </button>
 
-      <p
-        id="loginMessage"
-        class="auth-message">
+      <p id="loginMessage"
+         class="auth-message">
       </p>
 
     </form>
 
-    <!-- SIGNUP -->
 
     <form
       class="auth-form"
@@ -1059,7 +978,6 @@ footer{
 
       <input
         id="signupUsername"
-        type="text"
         placeholder="Username"
         required>
 
@@ -1072,8 +990,8 @@ footer{
       <input
         id="signupPassword"
         type="password"
-        placeholder="Password"
-        minlength="4"
+        placeholder="Password (6+ characters)"
+        minlength="6"
         required>
 
       <button
@@ -1082,9 +1000,8 @@ footer{
         Create Account
       </button>
 
-      <p
-        id="signupMessage"
-        class="auth-message">
+      <p id="signupMessage"
+         class="auth-message">
       </p>
 
     </form>
@@ -1093,273 +1010,271 @@ footer{
 
 </div>
 
+
 <script>
 
-/* =========================================================
-   DEFAULT SETTINGS
-========================================================= */
+const API_URL = "https://help.eagleclouds.bond";
 
 const DEFAULT_SETTINGS = {
-  status: "Available for opportunities",
-  title: "Let's build something great.",
+  status:"Available for opportunities",
+  title:"Let's build something great.",
   description:
     "Have an idea, project or opportunity? Send me a message and let's turn it into something awesome.",
-  email: "almiteextra2@gmail.com",
-  contactText: "Contact Me",
-  loginText: "Login",
-  heroButton: "Contact Me",
-  submitButton: "Send Message",
-  navContact: "Contact",
-
-  primary: "#7c3aed",
-  secondary: "#06b6d4",
-
+  email:"almiteextra2@gmail.com",
+  contactText:"Contact Me",
+  loginText:"Login",
+  heroButton:"Contact Me",
+  submitButton:"Send Message",
+  navContact:"Contact",
+  primary:"#7c3aed",
+  secondary:"#06b6d4",
   background:
     "https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=2200&q=85"
 };
 
+let settings = {...DEFAULT_SETTINGS};
+let currentUser = null;
+let selectedConversation = null;
 
-/* =========================================================
-   INITIAL ADMIN
-========================================================= */
 
-function initializeAdmin(){
+/* ================= API ================= */
 
-  let users =
-    JSON.parse(localStorage.getItem("users") || "{}");
+async function api(path,options={}){
 
-  if(!users.admin){
+  const headers = {
+    "Content-Type":"application/json",
+    ...(options.headers || {})
+  };
 
-    users.admin = {
-      email: "almiteextra2@gmail.com",
-      password: "admin",
-      role: "admin"
+  const token = localStorage.getItem("chatToken");
+
+  if(token){
+    headers.Authorization = `Bearer ${token}`;
+  }
+
+  const response = await fetch(
+    API_URL + path,
+    {
+      ...options,
+      headers
+    }
+  );
+
+  const data = await response.json();
+
+  if(!response.ok){
+    throw new Error(data.error || "Request failed.");
+  }
+
+  return data;
+}
+
+
+/* ================= SETTINGS ================= */
+
+async function loadSettings(){
+
+  try{
+
+    const data = await api("/settings");
+
+    settings = {
+      ...DEFAULT_SETTINGS,
+      ...(data.settings || {})
     };
 
-    localStorage.setItem(
-      "users",
-      JSON.stringify(users)
-    );
+    applySettings();
+
+  }catch(error){
+
+    console.error(error);
+
+    applySettings();
   }
 }
 
 
-/* =========================================================
-   SETTINGS
-========================================================= */
-
-function getSettings(){
-
-  return {
-    ...DEFAULT_SETTINGS,
-    ...(JSON.parse(
-      localStorage.getItem("siteSettings") || "{}"
-    ))
-  };
-}
-
-function saveSettings(settings){
-
-  localStorage.setItem(
-    "siteSettings",
-    JSON.stringify(settings)
-  );
-}
-
-
-/* =========================================================
-   APPLY SETTINGS
-========================================================= */
-
 function applySettings(){
-
-  const s = getSettings();
 
   document.documentElement.style.setProperty(
     "--accent",
-    s.primary
+    settings.primary
   );
 
   document.documentElement.style.setProperty(
     "--accent2",
-    s.secondary
+    settings.secondary
   );
 
   document.querySelector(".background").style.background =
-    `linear-gradient(rgba(3,3,8,.68),rgba(3,3,8,.86)),url("${s.background}") center/cover no-repeat`;
+    `linear-gradient(rgba(3,3,8,.68),rgba(3,3,8,.86)),url("${settings.background}") center/cover no-repeat`;
 
   document.getElementById("heroStatus").textContent =
-    s.status;
+    settings.status;
 
   document.getElementById("heroTitle").textContent =
-    s.title;
+    settings.title;
 
   document.getElementById("heroDescription").textContent =
-    s.description;
+    settings.description;
 
   document.getElementById("contactEmail").textContent =
-    s.email;
+    settings.email;
 
   document.getElementById("heroContactBtn").textContent =
-    s.heroButton;
+    settings.heroButton;
 
   document.getElementById("submitButton").textContent =
-    s.submitButton;
+    settings.submitButton;
 
   document.getElementById("navContactBtn").textContent =
-    s.navContact;
+    settings.navContact;
 
   updateAuthUI();
 }
 
 
-/* =========================================================
-   ADMIN SETTINGS FORM
-========================================================= */
-
 function loadAdminSettings(){
 
-  const s = getSettings();
-
   document.getElementById("setStatus").value =
-    s.status;
+    settings.status;
 
   document.getElementById("setTitle").value =
-    s.title;
+    settings.title;
 
   document.getElementById("setDescription").value =
-    s.description;
+    settings.description;
 
   document.getElementById("setEmail").value =
-    s.email;
+    settings.email;
 
   document.getElementById("setContactText").value =
-    s.contactText;
+    settings.contactText;
 
   document.getElementById("setLoginText").value =
-    s.loginText;
+    settings.loginText;
 
   document.getElementById("buttonHero").value =
-    s.heroButton;
+    settings.heroButton;
 
   document.getElementById("buttonSubmit").value =
-    s.submitButton;
+    settings.submitButton;
 
   document.getElementById("buttonNavContact").value =
-    s.navContact;
+    settings.navContact;
 
   document.getElementById("primaryColor").value =
-    s.primary;
+    settings.primary;
 
   document.getElementById("primaryColorText").value =
-    s.primary;
+    settings.primary;
 
   document.getElementById("secondaryColor").value =
-    s.secondary;
+    settings.secondary;
 
   document.getElementById("secondaryColorText").value =
-    s.secondary;
+    settings.secondary;
 
   document.getElementById("backgroundUrl").value =
-    s.background;
+    settings.background;
 }
 
 
-function saveWebsiteSettings(){
+async function saveWebsiteSettings(){
 
-  const s = getSettings();
-
-  s.status =
+  settings.status =
     document.getElementById("setStatus").value.trim();
 
-  s.title =
+  settings.title =
     document.getElementById("setTitle").value.trim();
 
-  s.description =
+  settings.description =
     document.getElementById("setDescription").value.trim();
 
-  s.email =
+  settings.email =
     document.getElementById("setEmail").value.trim();
 
-  s.contactText =
+  settings.contactText =
     document.getElementById("setContactText").value.trim();
 
-  s.loginText =
+  settings.loginText =
     document.getElementById("setLoginText").value.trim();
 
-  saveSettings(s);
-
-  applySettings();
-
-  alert("Website settings saved successfully!");
+  await saveAllSettings();
 }
 
 
-function saveTheme(){
+async function saveTheme(){
 
-  const s = getSettings();
-
-  s.primary =
+  settings.primary =
     document.getElementById("primaryColorText").value.trim()
     || document.getElementById("primaryColor").value;
 
-  s.secondary =
+  settings.secondary =
     document.getElementById("secondaryColorText").value.trim()
     || document.getElementById("secondaryColor").value;
 
-  s.background =
+  settings.background =
     document.getElementById("backgroundUrl").value.trim()
     || DEFAULT_SETTINGS.background;
 
-  saveSettings(s);
-
-  applySettings();
-
-  alert("Theme updated!");
+  await saveAllSettings();
 }
 
 
-function resetTheme(){
+async function resetTheme(){
 
-  const s = getSettings();
+  settings.primary = DEFAULT_SETTINGS.primary;
+  settings.secondary = DEFAULT_SETTINGS.secondary;
+  settings.background = DEFAULT_SETTINGS.background;
 
-  s.primary = DEFAULT_SETTINGS.primary;
-  s.secondary = DEFAULT_SETTINGS.secondary;
-  s.background = DEFAULT_SETTINGS.background;
-
-  saveSettings(s);
-
+  await saveAllSettings();
   loadAdminSettings();
-  applySettings();
-
-  alert("Theme reset!");
 }
 
 
-function saveButtons(){
+async function saveButtons(){
 
-  const s = getSettings();
-
-  s.heroButton =
+  settings.heroButton =
     document.getElementById("buttonHero").value.trim();
 
-  s.submitButton =
+  settings.submitButton =
     document.getElementById("buttonSubmit").value.trim();
 
-  s.navContact =
+  settings.navContact =
     document.getElementById("buttonNavContact").value.trim();
 
-  saveSettings(s);
-
-  applySettings();
-
-  alert("Buttons updated!");
+  await saveAllSettings();
 }
 
 
-/* =========================================================
-   AUTH MODAL
-========================================================= */
+async function saveAllSettings(){
+
+  try{
+
+    const data = await api(
+      "/admin/settings",
+      {
+        method:"PUT",
+        body:JSON.stringify(settings)
+      }
+    );
+
+    settings = data.settings;
+
+    applySettings();
+    loadAdminSettings();
+
+    alert("Website settings saved!");
+
+  }catch(error){
+
+    alert(error.message);
+  }
+}
+
+
+/* ================= AUTH ================= */
 
 function openAuth(){
 
@@ -1426,263 +1341,187 @@ function switchAuth(type){
 }
 
 
-/* =========================================================
-   LOGIN
-========================================================= */
-
-function login(event){
+async function login(event){
 
   event.preventDefault();
-
-  const username =
-    document.getElementById("loginUsername")
-      .value.trim();
-
-  const password =
-    document.getElementById("loginPassword")
-      .value;
-
-  const users =
-    JSON.parse(
-      localStorage.getItem("users") || "{}"
-    );
-
-  const user = users[username];
 
   const message =
     document.getElementById("loginMessage");
 
-  if(!user){
+  message.textContent = "Logging in...";
+  message.classList.remove("success");
+
+  try{
+
+    const data = await api(
+      "/login",
+      {
+        method:"POST",
+        body:JSON.stringify({
+          identifier:
+            document.getElementById("loginIdentifier").value.trim(),
+          password:
+            document.getElementById("loginPassword").value
+        })
+      }
+    );
+
+    localStorage.setItem(
+      "chatToken",
+      data.token
+    );
+
+    localStorage.setItem(
+      "chatUser",
+      JSON.stringify(data.user)
+    );
+
+    currentUser = data.user;
 
     message.textContent =
-      "Account not found.";
+      "Login successful!";
 
-    message.classList.remove("success");
+    message.classList.add("success");
 
-    return;
-  }
+    setTimeout(async()=>{
 
-  if(user.password !== password){
+      closeAuth();
+      updateAuthUI();
+      updateChatUI();
+
+      if(currentUser.role === "admin"){
+        await openAdmin();
+      }else{
+        await loadCustomerMessages();
+      }
+
+    },400);
+
+  }catch(error){
 
     message.textContent =
-      "Incorrect password.";
-
-    message.classList.remove("success");
-
-    return;
+      error.message;
   }
-
-  localStorage.setItem(
-    "loggedUser",
-    username
-  );
-
-  message.textContent =
-    "Login successful!";
-
-  message.classList.add("success");
-
-  setTimeout(() => {
-
-    closeAuth();
-    updateAuthUI();
-
-  },500);
 }
 
 
-/* =========================================================
-   SIGNUP
-========================================================= */
-
-function signup(event){
+async function signup(event){
 
   event.preventDefault();
-
-  const username =
-    document.getElementById("signupUsername")
-      .value.trim();
-
-  const email =
-    document.getElementById("signupEmail")
-      .value.trim();
-
-  const password =
-    document.getElementById("signupPassword")
-      .value;
 
   const message =
     document.getElementById("signupMessage");
 
-  if(username.toLowerCase() === "admin"){
+  try{
 
-    message.textContent =
-      "This username is reserved.";
-
-    return;
-  }
-
-  const users =
-    JSON.parse(
-      localStorage.getItem("users") || "{}"
+    await api(
+      "/register",
+      {
+        method:"POST",
+        body:JSON.stringify({
+          username:
+            document.getElementById("signupUsername").value.trim(),
+          email:
+            document.getElementById("signupEmail").value.trim(),
+          password:
+            document.getElementById("signupPassword").value
+        })
+      }
     );
 
-  if(users[username]){
+    message.textContent =
+      "Account created! You can now login.";
+
+    message.classList.add("success");
+
+    document.getElementById("signupForm").reset();
+
+    setTimeout(()=>{
+      switchAuth("login");
+    },700);
+
+  }catch(error){
 
     message.textContent =
-      "Username already exists.";
-
-    return;
+      error.message;
   }
-
-  users[username] = {
-    email:email,
-    password:password,
-    role:"user"
-  };
-
-  localStorage.setItem(
-    "users",
-    JSON.stringify(users)
-  );
-
-  message.textContent =
-    "Account created successfully!";
-
-  message.classList.add("success");
-
-  document.getElementById("signupForm").reset();
-
-  setTimeout(() => {
-    switchAuth("login");
-  },700);
 }
 
 
-/* =========================================================
-   ADD ADMIN
-========================================================= */
+/* ================= SESSION ================= */
 
-function addAdmin(){
+async function restoreSession(){
 
-  if(localStorage.getItem("loggedUser") !== "admin" &&
-     !isCurrentUserAdmin()){
+  const token =
+    localStorage.getItem("chatToken");
 
+  if(!token){
+
+    currentUser = null;
+    updateAuthUI();
+    updateChatUI();
     return;
   }
 
-  const username =
-    document.getElementById("newAdminUsername")
-      .value.trim();
+  try{
 
-  const email =
-    document.getElementById("newAdminEmail")
-      .value.trim();
+    const data = await api("/me");
 
-  const password =
-    document.getElementById("newAdminPassword")
-      .value;
+    currentUser = data.user;
 
-  const message =
-    document.getElementById("adminMessage");
+    localStorage.setItem(
+      "chatUser",
+      JSON.stringify(currentUser)
+    );
 
-  if(!username || !email || !password){
+    updateAuthUI();
+    updateChatUI();
 
-    message.textContent =
-      "Please fill all fields.";
+  }catch{
 
-    return;
+    localStorage.removeItem("chatToken");
+    localStorage.removeItem("chatUser");
+
+    currentUser = null;
+
+    updateAuthUI();
+    updateChatUI();
   }
-
-  const users =
-    JSON.parse(
-      localStorage.getItem("users") || "{}"
-    );
-
-  if(users[username]){
-
-    message.textContent =
-      "Username already exists.";
-
-    return;
-  }
-
-  users[username] = {
-    email:email,
-    password:password,
-    role:"admin"
-  };
-
-  localStorage.setItem(
-    "users",
-    JSON.stringify(users)
-  );
-
-  message.textContent =
-    "New admin created successfully!";
-
-  message.classList.add("success");
-
-  document.getElementById(
-    "newAdminUsername"
-  ).value = "";
-
-  document.getElementById(
-    "newAdminEmail"
-  ).value = "";
-
-  document.getElementById(
-    "newAdminPassword"
-  ).value = "";
-
-  renderUsers();
 }
 
 
-/* =========================================================
-   CURRENT USER
-========================================================= */
+async function logout(){
 
-function getCurrentUser(){
-
-  const username =
-    localStorage.getItem("loggedUser");
-
-  if(!username) return null;
-
-  const users =
-    JSON.parse(
-      localStorage.getItem("users") || "{}"
+  try{
+    await api(
+      "/logout",
+      {method:"POST"}
     );
+  }catch{}
 
-  return users[username] || null;
+  localStorage.removeItem("chatToken");
+  localStorage.removeItem("chatUser");
+
+  currentUser = null;
+  selectedConversation = null;
+
+  document
+    .getElementById("adminPanel")
+    .classList.remove("show");
+
+  updateAuthUI();
+  updateChatUI();
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
 }
 
 
-function isCurrentUserAdmin(){
-
-  const username =
-    localStorage.getItem("loggedUser");
-
-  if(!username) return false;
-
-  const users =
-    JSON.parse(
-      localStorage.getItem("users") || "{}"
-    );
-
-  return users[username]?.role === "admin";
-}
-
-
-/* =========================================================
-   NAVBAR AUTH UI
-========================================================= */
+/* ================= UI ================= */
 
 function updateAuthUI(){
-
-  const username =
-    localStorage.getItem("loggedUser");
 
   const authBtn =
     document.getElementById("authNavBtn");
@@ -1693,96 +1532,200 @@ function updateAuthUI(){
   const heroLogin =
     document.getElementById("heroLoginBtn");
 
-  if(username){
+  if(!currentUser){
 
     authBtn.textContent =
-      "Logout";
+      settings.loginText || "Login";
 
-    authBtn.onclick =
-      logout;
-
-    if(isCurrentUserAdmin()){
-
-      adminBtn.style.display =
-        "inline-block";
-
-      heroLogin.textContent =
-        "Admin Panel";
-
-      heroLogin.onclick =
-        scrollToAdmin;
-
-    }else{
-
-      adminBtn.style.display =
-        "none";
-
-      heroLogin.textContent =
-        "Logout";
-
-      heroLogin.onclick =
-        logout;
-    }
-
-  }else{
-
-    authBtn.textContent =
-      "Login";
-
-    authBtn.onclick =
-      openAuth;
+    authBtn.onclick = openAuth;
 
     adminBtn.style.display =
       "none";
 
     heroLogin.textContent =
-      "Login";
+      settings.loginText || "Login";
 
     heroLogin.onclick =
       openAuth;
+
+    return;
+  }
+
+  authBtn.textContent = "Logout";
+  authBtn.onclick = logout;
+
+  if(currentUser.role === "admin"){
+
+    adminBtn.style.display =
+      "inline-block";
+
+    heroLogin.textContent =
+      "Admin Panel";
+
+    heroLogin.onclick =
+      scrollToAdmin;
+
+  }else{
+
+    adminBtn.style.display =
+      "none";
+
+    heroLogin.textContent =
+      "Logout";
+
+    heroLogin.onclick =
+      logout;
   }
 }
 
 
-/* =========================================================
-   LOGOUT
-========================================================= */
+function updateChatUI(){
 
-function logout(){
+  const loginRequired =
+    document.getElementById("loginRequired");
 
-  localStorage.removeItem("loggedUser");
+  const messages =
+    document.getElementById("customerMessages");
 
-  document
-    .getElementById("adminPanel")
-    .classList.remove("show");
+  const form =
+    document.getElementById("customerChatForm");
 
-  updateAuthUI();
+  if(!currentUser){
 
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
+    loginRequired.style.display =
+      "flex";
+
+    messages.style.display =
+      "none";
+
+    form.style.display =
+      "none";
+
+    return;
+  }
+
+  loginRequired.style.display =
+    "none";
+
+  messages.style.display =
+    "flex";
+
+  form.style.display =
+    "flex";
+
+  loadCustomerMessages();
 }
 
 
-/* =========================================================
-   ADMIN PANEL
-========================================================= */
+/* ================= CUSTOMER CHAT ================= */
 
-function scrollToAdmin(){
+async function sendCustomerMessage(event){
 
-  if(!isCurrentUserAdmin()){
+  event.preventDefault();
+
+  const input =
+    document.getElementById("customerMessage");
+
+  const message =
+    input.value.trim();
+
+  if(!message) return;
+
+  try{
+
+    await api(
+      "/messages",
+      {
+        method:"POST",
+        body:JSON.stringify({message})
+      }
+    );
+
+    input.value = "";
+
+    await loadCustomerMessages();
+
+  }catch(error){
+
+    alert(error.message);
+  }
+}
+
+
+async function loadCustomerMessages(){
+
+  if(!currentUser ||
+     currentUser.role === "admin") return;
+
+  try{
+
+    const data =
+      await api("/messages");
+
+    const box =
+      document.getElementById("customerMessages");
+
+    box.innerHTML = "";
+
+    if(!data.messages.length){
+
+      box.innerHTML = `
+        <div style="color:#71717a;text-align:center;margin:auto">
+          No messages yet. Start the conversation.
+        </div>
+      `;
+
+      return;
+    }
+
+    data.messages.forEach(msg=>{
+
+      const item =
+        document.createElement("div");
+
+      item.className =
+        "message " +
+        (msg.sender_role === "admin"
+          ? "admin"
+          : "user");
+
+      item.textContent =
+        msg.message;
+
+      const time =
+        document.createElement("small");
+
+      time.textContent =
+        new Date(msg.created_at)
+          .toLocaleString();
+
+      item.appendChild(time);
+      box.appendChild(item);
+
+    });
+
+    box.scrollTop =
+      box.scrollHeight;
+
+  }catch(error){
+
+    console.error(error);
+  }
+}
+
+
+/* ================= ADMIN ================= */
+
+async function scrollToAdmin(){
+
+  if(!currentUser ||
+     currentUser.role !== "admin"){
 
     openAuth();
     return;
   }
 
-  document
-    .getElementById("adminPanel")
-    .classList.add("show");
-
-  loadAdminSettings();
-  renderUsers();
+  await openAdmin();
 
   document
     .getElementById("adminPanel")
@@ -1792,105 +1735,300 @@ function scrollToAdmin(){
 }
 
 
-/* =========================================================
-   USERS MANAGEMENT
-========================================================= */
+async function openAdmin(){
 
-function renderUsers(){
+  document
+    .getElementById("adminPanel")
+    .classList.add("show");
 
-  const list =
-    document.getElementById("userList");
+  loadAdminSettings();
 
-  if(!list) return;
+  await Promise.all([
+    loadTickets(),
+    loadUsers()
+  ]);
+}
 
-  const users =
-    JSON.parse(
-      localStorage.getItem("users") || "{}"
-    );
 
-  list.innerHTML = "";
+async function loadTickets(){
 
-  Object.entries(users).forEach(
-    ([username,user]) => {
+  try{
+
+    const data =
+      await api("/admin/conversations");
+
+    const list =
+      document.getElementById("ticketList");
+
+    list.innerHTML = "";
+
+    if(!data.conversations.length){
+
+      list.innerHTML = `
+        <div style="color:#71717a;padding:15px">
+          No customer tickets yet.
+        </div>
+      `;
+
+      return;
+    }
+
+    data.conversations.forEach(ticket=>{
 
       const item =
         document.createElement("div");
 
-      item.className = "user-item";
-
-      const role =
-        user.role === "admin"
-          ? `<span class="admin-badge">ADMIN</span>`
-          : `<span class="admin-badge">USER</span>`;
-
-      let deleteButton = "";
-
-      if(username !== "admin"){
-
-        deleteButton = `
-          <button
-            class="btn danger"
-            onclick="deleteUser('${username}')">
-            Delete
-          </button>
-        `;
-      }
+      item.className =
+        "ticket" +
+        (selectedConversation == ticket.id
+          ? " active"
+          : "");
 
       item.innerHTML = `
-        <div>
-          <strong>${escapeHTML(username)}</strong>
-          ${role}
-          <small>${escapeHTML(user.email || "")}</small>
-        </div>
-
-        ${deleteButton}
+        <strong>${escapeHTML(ticket.username)}</strong>
+        <small>${escapeHTML(ticket.email)}</small>
+        <small>${new Date(ticket.updated_at).toLocaleString()}</small>
       `;
 
+      item.onclick = ()=>{
+        selectedConversation = ticket.id;
+        loadTickets();
+        loadAdminMessages(ticket.id);
+      };
+
       list.appendChild(item);
+
+    });
+
+    if(!selectedConversation &&
+       data.conversations.length){
+
+      selectedConversation =
+        data.conversations[0].id;
+
+      loadAdminMessages(
+        selectedConversation
+      );
     }
-  );
+
+  }catch(error){
+
+    console.error(error);
+  }
 }
 
 
-function deleteUser(username){
+async function loadAdminMessages(id){
 
-  if(username === "admin"){
+  try{
 
-    alert("Default admin cannot be deleted.");
+    const data =
+      await api(
+        "/admin/messages/" + id
+      );
+
+    const box =
+      document.getElementById("adminMessages");
+
+    box.innerHTML = "";
+
+    data.messages.forEach(msg=>{
+
+      const item =
+        document.createElement("div");
+
+      item.className =
+        "admin-message " +
+        (msg.sender_role === "admin"
+          ? "admin"
+          : "customer");
+
+      item.textContent =
+        msg.message;
+
+      box.appendChild(item);
+    });
+
+    box.scrollTop =
+      box.scrollHeight;
+
+  }catch(error){
+
+    console.error(error);
+  }
+}
+
+
+async function sendAdminReply(event){
+
+  event.preventDefault();
+
+  if(!selectedConversation){
+    alert("Select a customer ticket first.");
     return;
   }
 
-  if(!confirm(
-    `Delete account "${username}"?`
-  )) return;
+  const input =
+    document.getElementById("adminReply");
 
-  const users =
-    JSON.parse(
-      localStorage.getItem("users") || "{}"
+  const message =
+    input.value.trim();
+
+  if(!message) return;
+
+  try{
+
+    await api(
+      "/admin/reply",
+      {
+        method:"POST",
+        body:JSON.stringify({
+          conversationId:
+            selectedConversation,
+          message
+        })
+      }
     );
 
-  delete users[username];
+    input.value = "";
 
-  localStorage.setItem(
-    "users",
-    JSON.stringify(users)
-  );
+    await loadAdminMessages(
+      selectedConversation
+    );
 
-  if(
-    localStorage.getItem("loggedUser")
-    === username
-  ){
+    await loadTickets();
 
-    logout();
+  }catch(error){
+
+    alert(error.message);
   }
-
-  renderUsers();
 }
 
 
-/* =========================================================
-   SECURITY HELPER FOR ADMIN LIST
-========================================================= */
+/* ================= ADMIN USERS ================= */
+
+async function loadUsers(){
+
+  try{
+
+    const data =
+      await api("/admin/users");
+
+    const list =
+      document.getElementById("userList");
+
+    list.innerHTML = "";
+
+    data.users.forEach(user=>{
+
+      const item =
+        document.createElement("div");
+
+      item.className =
+        "user-item";
+
+      const role =
+        user.role === "admin"
+          ? "ADMIN"
+          : "USER";
+
+      item.innerHTML = `
+        <div>
+          <strong>${escapeHTML(user.username)}</strong>
+          <span class="admin-badge">${role}</span>
+          <small>${escapeHTML(user.email)}</small>
+        </div>
+        <button
+          class="btn danger"
+          onclick="deleteUser(${user.id})">
+          Delete
+        </button>
+      `;
+
+      list.appendChild(item);
+    });
+
+  }catch(error){
+
+    console.error(error);
+  }
+}
+
+
+async function addAdmin(){
+
+  const message =
+    document.getElementById("adminMessage");
+
+  try{
+
+    await api(
+      "/admin/users",
+      {
+        method:"POST",
+        body:JSON.stringify({
+          username:
+            document.getElementById("newAdminUsername").value.trim(),
+          email:
+            document.getElementById("newAdminEmail").value.trim(),
+          password:
+            document.getElementById("newAdminPassword").value
+        })
+      }
+    );
+
+    message.textContent =
+      "Admin created successfully.";
+
+    message.classList.add("success");
+
+    document.getElementById(
+      "newAdminUsername"
+    ).value = "";
+
+    document.getElementById(
+      "newAdminEmail"
+    ).value = "";
+
+    document.getElementById(
+      "newAdminPassword"
+    ).value = "";
+
+    await loadUsers();
+
+  }catch(error){
+
+    message.textContent =
+      error.message;
+  }
+}
+
+
+async function deleteUser(id){
+
+  if(!confirm(
+    "Delete this account?"
+  )) return;
+
+  try{
+
+    await api(
+      "/admin/users/" + id,
+      {
+        method:"DELETE"
+      }
+    );
+
+    await loadUsers();
+
+  }catch(error){
+
+    alert(error.message);
+  }
+}
+
+
+/* ================= HELPERS ================= */
 
 function escapeHTML(value){
 
@@ -1903,32 +2041,51 @@ function escapeHTML(value){
 }
 
 
-/* =========================================================
-   KEYBOARD
-========================================================= */
-
 document.addEventListener(
   "keydown",
-  event => {
-
+  event=>{
     if(event.key === "Escape"){
       closeAuth();
     }
-
   }
 );
 
 
-/* =========================================================
-   START
-========================================================= */
-
 document.getElementById("year").textContent =
   new Date().getFullYear();
 
-initializeAdmin();
-applySettings();
 
+/* ================= START ================= */
+
+(async function(){
+
+  await loadSettings();
+  await restoreSession();
+
+  setInterval(()=>{
+
+    if(currentUser){
+
+      if(currentUser.role === "admin"){
+
+        loadTickets();
+
+        if(selectedConversation){
+          loadAdminMessages(
+            selectedConversation
+          );
+        }
+
+      }else{
+
+        loadCustomerMessages();
+      }
+
+    }
+
+  },5000);
+
+})();
 </script>
 
 </body>
