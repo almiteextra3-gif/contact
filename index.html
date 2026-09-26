@@ -1370,36 +1370,35 @@ async function login(event){
 
   event.preventDefault();
 
-  const message =
-    document.getElementById("loginMessage");
+  const message = document.getElementById("loginMessage");
 
-  message.textContent =
-    "Logging in...";
-
+  message.textContent = "Logging in...";
   message.classList.remove("success");
+
+  const username = document
+    .getElementById("loginIdentifier")
+    .value
+    .trim();
+
+  const password = document
+    .getElementById("loginPassword")
+    .value;
+
+  if(!username || !password){
+    message.textContent = "Username and password are required.";
+    return;
+  }
 
   try{
 
-    const loginValue =
-      document.getElementById("loginIdentifier")
-        .value
-        .trim();
+    const data = await api("/login",{
+      method:"POST",
+      body:JSON.stringify({
+        username: username,
+        password: password
+      })
+    });
 
-    const password =
-      document.getElementById("loginPassword")
-        .value;
-
-    const data = await api(
-      "/login",
-      {
-        method:"POST",
-
-        body:JSON.stringify({
-          login:loginValue,
-          password:password
-        })
-      }
-    );
 
     localStorage.setItem(
       "chatToken",
@@ -1411,12 +1410,13 @@ async function login(event){
       JSON.stringify(data.user)
     );
 
+
     currentUser = data.user;
 
-    message.textContent =
-      "Login successful!";
 
+    message.textContent = "Login successful!";
     message.classList.add("success");
+
 
     setTimeout(async()=>{
 
@@ -1425,23 +1425,18 @@ async function login(event){
       updateChatUI();
 
       if(currentUser.role === "admin"){
-
         await openAdmin();
-
       }else{
-
         await loadCustomerMessages();
-
       }
 
-    },400);
+    },500);
+
 
   }catch(error){
 
-    message.textContent =
-      error.message;
+    message.textContent = error.message;
 
-    message.classList.remove("success");
   }
 }
 
