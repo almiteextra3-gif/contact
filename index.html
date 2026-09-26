@@ -18,7 +18,6 @@
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
-
 html{scroll-behavior:smooth}
 
 body{
@@ -390,7 +389,6 @@ input:focus,textarea:focus{
 .success{color:#4ade80}
 
 .admin-section{display:none}
-
 .admin-section.show{display:block}
 
 .admin-grid{
@@ -551,11 +549,17 @@ footer{
   <div class="logo"><span>A</span> Almite.</div>
 
   <div class="nav-buttons">
-    <a href="#contact" class="btn btn-secondary" id="navContactBtn">
+
+    <a href="#contact"
+       class="btn btn-secondary"
+       id="navContactBtn">
       Contact
     </a>
 
-    <button class="btn btn-primary" id="authNavBtn" onclick="openAuth()">
+    <button
+      class="btn btn-primary"
+      id="authNavBtn"
+      onclick="openAuth()">
       Login
     </button>
 
@@ -566,6 +570,7 @@ footer{
       style="display:none">
       Admin Panel
     </button>
+
   </div>
 </nav>
 
@@ -588,9 +593,10 @@ footer{
 
   <div class="hero-actions">
 
-    <a href="#contact"
-       class="btn btn-primary"
-       id="heroContactBtn">
+    <a
+      href="#contact"
+      class="btn btn-primary"
+      id="heroContactBtn">
       Contact Me
     </a>
 
@@ -604,7 +610,6 @@ footer{
   </div>
 
 </section>
-
 
 <section class="section" id="contact">
 
@@ -644,7 +649,9 @@ footer{
     <div class="card chat-box" id="customerChat">
 
       <div class="login-required" id="loginRequired">
+
         <h3>Login required</h3>
+
         <p style="color:var(--muted)">
           Login or create an account to contact me.
         </p>
@@ -654,6 +661,7 @@ footer{
           onclick="openAuth()">
           Login / Sign Up
         </button>
+
       </div>
 
       <div
@@ -689,15 +697,16 @@ footer{
 
 </section>
 
-
 <section
   class="section admin-section"
   id="adminPanel">
 
-  <div class="admin-header"
-       style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+  <div
+    class="admin-header"
+    style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
 
     <div>
+
       <h2 class="section-title">
         Admin Dashboard
       </h2>
@@ -705,14 +714,16 @@ footer{
       <p class="section-subtitle">
         Manage your website and customer support.
       </p>
+
     </div>
 
-    <button class="btn danger" onclick="logout()">
+    <button
+      class="btn danger"
+      onclick="logout()">
       Logout
     </button>
 
   </div>
-
 
   <div class="admin-grid">
 
@@ -746,7 +757,6 @@ footer{
       </button>
 
     </div>
-
 
     <div class="admin-card">
 
@@ -785,7 +795,6 @@ footer{
 
     </div>
 
-
     <div class="admin-card">
 
       <h3>🔘 Button Controls</h3>
@@ -808,7 +817,6 @@ footer{
 
     </div>
 
-
     <div class="admin-card">
 
       <h3>👑 Create Admin</h3>
@@ -829,16 +837,17 @@ footer{
         Create Admin
       </button>
 
-      <p id="adminMessage"
-         class="auth-message"
-         style="margin-top:12px">
+      <p
+        id="adminMessage"
+        class="auth-message"
+        style="margin-top:12px">
       </p>
 
     </div>
 
-
-    <div class="admin-card"
-         style="grid-column:1/-1">
+    <div
+      class="admin-card"
+      style="grid-column:1/-1">
 
       <h3>🎫 Customer Tickets</h3>
 
@@ -879,14 +888,15 @@ footer{
 
     </div>
 
-
-    <div class="admin-card"
-         style="grid-column:1/-1">
+    <div
+      class="admin-card"
+      style="grid-column:1/-1">
 
       <h3>👥 Accounts</h3>
 
-      <div id="userList"
-           class="user-list">
+      <div
+        id="userList"
+        class="user-list">
       </div>
 
     </div>
@@ -900,7 +910,6 @@ footer{
 <footer>
   © <span id="year"></span> Almite. All rights reserved.
 </footer>
-
 
 <div
   class="modal"
@@ -941,7 +950,6 @@ footer{
 
     </div>
 
-
     <form
       class="auth-form active"
       id="loginForm"
@@ -950,12 +958,14 @@ footer{
       <input
         id="loginIdentifier"
         placeholder="Username or Email"
+        autocomplete="username"
         required>
 
       <input
         id="loginPassword"
         type="password"
         placeholder="Password"
+        autocomplete="current-password"
         required>
 
       <button
@@ -964,12 +974,12 @@ footer{
         Login
       </button>
 
-      <p id="loginMessage"
-         class="auth-message">
+      <p
+        id="loginMessage"
+        class="auth-message">
       </p>
 
     </form>
-
 
     <form
       class="auth-form"
@@ -979,12 +989,14 @@ footer{
       <input
         id="signupUsername"
         placeholder="Username"
+        autocomplete="username"
         required>
 
       <input
         id="signupEmail"
         type="email"
         placeholder="Email"
+        autocomplete="email"
         required>
 
       <input
@@ -992,6 +1004,7 @@ footer{
         type="password"
         placeholder="Password (6+ characters)"
         minlength="6"
+        autocomplete="new-password"
         required>
 
       <button
@@ -1000,8 +1013,9 @@ footer{
         Create Account
       </button>
 
-      <p id="signupMessage"
-         class="auth-message">
+      <p
+        id="signupMessage"
+        class="auth-message">
       </p>
 
     </form>
@@ -1009,7 +1023,6 @@ footer{
   </div>
 
 </div>
-
 
 <script>
 
@@ -1060,10 +1073,18 @@ async function api(path,options={}){
     }
   );
 
-  const data = await response.json();
+  let data;
+
+  try{
+    data = await response.json();
+  }catch{
+    throw new Error("Server returned an invalid response.");
+  }
 
   if(!response.ok){
-    throw new Error(data.error || "Request failed.");
+    throw new Error(
+      data.error || "Request failed."
+    );
   }
 
   return data;
@@ -1088,8 +1109,8 @@ async function loadSettings(){
   }catch(error){
 
     console.error(error);
-
     applySettings();
+
   }
 }
 
@@ -1256,7 +1277,9 @@ async function saveAllSettings(){
       "/admin/settings",
       {
         method:"PUT",
-        body:JSON.stringify(settings)
+        body:JSON.stringify({
+          settings
+        })
       }
     );
 
@@ -1341,6 +1364,8 @@ function switchAuth(type){
 }
 
 
+/* ================= LOGIN ================= */
+
 async function login(event){
 
   event.preventDefault();
@@ -1348,20 +1373,30 @@ async function login(event){
   const message =
     document.getElementById("loginMessage");
 
-  message.textContent = "Logging in...";
+  message.textContent =
+    "Logging in...";
+
   message.classList.remove("success");
 
   try{
+
+    const loginValue =
+      document.getElementById("loginIdentifier")
+        .value
+        .trim();
+
+    const password =
+      document.getElementById("loginPassword")
+        .value;
 
     const data = await api(
       "/login",
       {
         method:"POST",
+
         body:JSON.stringify({
-          identifier:
-            document.getElementById("loginIdentifier").value.trim(),
-          password:
-            document.getElementById("loginPassword").value
+          login:loginValue,
+          password:password
         })
       }
     );
@@ -1390,9 +1425,13 @@ async function login(event){
       updateChatUI();
 
       if(currentUser.role === "admin"){
+
         await openAdmin();
+
       }else{
+
         await loadCustomerMessages();
+
       }
 
     },400);
@@ -1401,9 +1440,13 @@ async function login(event){
 
     message.textContent =
       error.message;
+
+    message.classList.remove("success");
   }
 }
 
+
+/* ================= SIGNUP ================= */
 
 async function signup(event){
 
@@ -1412,19 +1455,32 @@ async function signup(event){
   const message =
     document.getElementById("signupMessage");
 
+  message.textContent =
+    "Creating account...";
+
+  message.classList.remove("success");
+
   try{
 
     await api(
       "/register",
       {
         method:"POST",
+
         body:JSON.stringify({
           username:
-            document.getElementById("signupUsername").value.trim(),
+            document.getElementById("signupUsername")
+              .value
+              .trim(),
+
           email:
-            document.getElementById("signupEmail").value.trim(),
+            document.getElementById("signupEmail")
+              .value
+              .trim(),
+
           password:
-            document.getElementById("signupPassword").value
+            document.getElementById("signupPassword")
+              .value
         })
       }
     );
@@ -1434,16 +1490,27 @@ async function signup(event){
 
     message.classList.add("success");
 
-    document.getElementById("signupForm").reset();
+    document
+      .getElementById("signupForm")
+      .reset();
 
     setTimeout(()=>{
+
       switchAuth("login");
+
+      document.getElementById(
+        "loginIdentifier"
+      ).value =
+        "";
+
     },700);
 
   }catch(error){
 
     message.textContent =
       error.message;
+
+    message.classList.remove("success");
   }
 }
 
@@ -1458,16 +1525,20 @@ async function restoreSession(){
   if(!token){
 
     currentUser = null;
+
     updateAuthUI();
     updateChatUI();
+
     return;
   }
 
   try{
 
-    const data = await api("/me");
+    const data =
+      await api("/me");
 
-    currentUser = data.user;
+    currentUser =
+      data.user;
 
     localStorage.setItem(
       "chatUser",
@@ -1476,6 +1547,10 @@ async function restoreSession(){
 
     updateAuthUI();
     updateChatUI();
+
+    if(currentUser.role === "admin"){
+      await openAdmin();
+    }
 
   }catch{
 
@@ -1493,10 +1568,14 @@ async function restoreSession(){
 async function logout(){
 
   try{
+
     await api(
       "/logout",
-      {method:"POST"}
+      {
+        method:"POST"
+      }
     );
+
   }catch{}
 
   localStorage.removeItem("chatToken");
@@ -1537,7 +1616,8 @@ function updateAuthUI(){
     authBtn.textContent =
       settings.loginText || "Login";
 
-    authBtn.onclick = openAuth;
+    authBtn.onclick =
+      openAuth;
 
     adminBtn.style.display =
       "none";
@@ -1551,8 +1631,11 @@ function updateAuthUI(){
     return;
   }
 
-  authBtn.textContent = "Logout";
-  authBtn.onclick = logout;
+  authBtn.textContent =
+    "Logout";
+
+  authBtn.onclick =
+    logout;
 
   if(currentUser.role === "admin"){
 
@@ -1637,7 +1720,9 @@ async function sendCustomerMessage(event){
       "/messages",
       {
         method:"POST",
-        body:JSON.stringify({message})
+        body:JSON.stringify({
+          message
+        })
       }
     );
 
@@ -1654,8 +1739,10 @@ async function sendCustomerMessage(event){
 
 async function loadCustomerMessages(){
 
-  if(!currentUser ||
-     currentUser.role === "admin") return;
+  if(
+    !currentUser ||
+    currentUser.role === "admin"
+  ) return;
 
   try{
 
@@ -1685,9 +1772,11 @@ async function loadCustomerMessages(){
 
       item.className =
         "message " +
-        (msg.sender_role === "admin"
-          ? "admin"
-          : "user");
+        (
+          msg.sender_role === "admin"
+            ? "admin"
+            : "user"
+        );
 
       item.textContent =
         msg.message;
@@ -1696,8 +1785,9 @@ async function loadCustomerMessages(){
         document.createElement("small");
 
       time.textContent =
-        new Date(msg.created_at)
-          .toLocaleString();
+        new Date(
+          msg.created_at
+        ).toLocaleString();
 
       item.appendChild(time);
       box.appendChild(item);
@@ -1718,8 +1808,10 @@ async function loadCustomerMessages(){
 
 async function scrollToAdmin(){
 
-  if(!currentUser ||
-     currentUser.role !== "admin"){
+  if(
+    !currentUser ||
+    currentUser.role !== "admin"
+  ){
 
     openAuth();
     return;
@@ -1736,6 +1828,13 @@ async function scrollToAdmin(){
 
 
 async function openAdmin(){
+
+  if(
+    !currentUser ||
+    currentUser.role !== "admin"
+  ){
+    return;
+  }
 
   document
     .getElementById("adminPanel")
@@ -1770,6 +1869,10 @@ async function loadTickets(){
         </div>
       `;
 
+      document.getElementById(
+        "adminMessages"
+      ).innerHTML = "";
+
       return;
     }
 
@@ -1780,9 +1883,11 @@ async function loadTickets(){
 
       item.className =
         "ticket" +
-        (selectedConversation == ticket.id
-          ? " active"
-          : "");
+        (
+          selectedConversation == ticket.id
+            ? " active"
+            : ""
+        );
 
       item.innerHTML = `
         <strong>${escapeHTML(ticket.username)}</strong>
@@ -1791,25 +1896,39 @@ async function loadTickets(){
       `;
 
       item.onclick = ()=>{
-        selectedConversation = ticket.id;
+
+        selectedConversation =
+          ticket.id;
+
         loadTickets();
-        loadAdminMessages(ticket.id);
+
+        loadAdminMessages(
+          ticket.id
+        );
       };
 
       list.appendChild(item);
 
     });
 
-    if(!selectedConversation &&
-       data.conversations.length){
+    const selectedStillExists =
+      data.conversations.some(
+        ticket =>
+          ticket.id == selectedConversation
+      );
+
+    if(
+      !selectedConversation ||
+      !selectedStillExists
+    ){
 
       selectedConversation =
         data.conversations[0].id;
-
-      loadAdminMessages(
-        selectedConversation
-      );
     }
+
+    await loadAdminMessages(
+      selectedConversation
+    );
 
   }catch(error){
 
@@ -1839,14 +1958,17 @@ async function loadAdminMessages(id){
 
       item.className =
         "admin-message " +
-        (msg.sender_role === "admin"
-          ? "admin"
-          : "customer");
+        (
+          msg.sender_role === "admin"
+            ? "admin"
+            : "customer"
+        );
 
       item.textContent =
         msg.message;
 
       box.appendChild(item);
+
     });
 
     box.scrollTop =
@@ -1864,7 +1986,11 @@ async function sendAdminReply(event){
   event.preventDefault();
 
   if(!selectedConversation){
-    alert("Select a customer ticket first.");
+
+    alert(
+      "Select a customer ticket first."
+    );
+
     return;
   }
 
@@ -1882,9 +2008,11 @@ async function sendAdminReply(event){
       "/admin/reply",
       {
         method:"POST",
+
         body:JSON.stringify({
           conversationId:
             selectedConversation,
+
           message
         })
       }
@@ -1938,14 +2066,22 @@ async function loadUsers(){
           <span class="admin-badge">${role}</span>
           <small>${escapeHTML(user.email)}</small>
         </div>
-        <button
-          class="btn danger"
-          onclick="deleteUser(${user.id})">
-          Delete
-        </button>
+
+        ${
+          user.id === currentUser?.id
+            ? `<span style="color:#71717a;font-size:12px">
+                 Current account
+               </span>`
+            : `<button
+                 class="btn danger"
+                 onclick="deleteUser(${user.id})">
+                 Delete
+               </button>`
+        }
       `;
 
       list.appendChild(item);
+
     });
 
   }catch(error){
@@ -1960,19 +2096,36 @@ async function addAdmin(){
   const message =
     document.getElementById("adminMessage");
 
+  message.textContent =
+    "Creating admin...";
+
+  message.classList.remove("success");
+
   try{
 
     await api(
       "/admin/users",
       {
         method:"POST",
+
         body:JSON.stringify({
+
           username:
-            document.getElementById("newAdminUsername").value.trim(),
+            document.getElementById(
+              "newAdminUsername"
+            ).value.trim(),
+
           email:
-            document.getElementById("newAdminEmail").value.trim(),
+            document.getElementById(
+              "newAdminEmail"
+            ).value.trim(),
+
           password:
-            document.getElementById("newAdminPassword").value
+            document.getElementById(
+              "newAdminPassword"
+            ).value,
+
+          role:"admin"
         })
       }
     );
@@ -2000,15 +2153,19 @@ async function addAdmin(){
 
     message.textContent =
       error.message;
+
+    message.classList.remove("success");
   }
 }
 
 
 async function deleteUser(id){
 
-  if(!confirm(
-    "Delete this account?"
-  )) return;
+  if(
+    !confirm(
+      "Delete this account?"
+    )
+  ) return;
 
   try{
 
@@ -2044,9 +2201,11 @@ function escapeHTML(value){
 document.addEventListener(
   "keydown",
   event=>{
+
     if(event.key === "Escape"){
       closeAuth();
     }
+
   }
 );
 
@@ -2064,22 +2223,23 @@ document.getElementById("year").textContent =
 
   setInterval(()=>{
 
-    if(currentUser){
+    if(!currentUser){
+      return;
+    }
 
-      if(currentUser.role === "admin"){
+    if(currentUser.role === "admin"){
 
-        loadTickets();
+      loadTickets();
 
-        if(selectedConversation){
-          loadAdminMessages(
-            selectedConversation
-          );
-        }
-
-      }else{
-
-        loadCustomerMessages();
+      if(selectedConversation){
+        loadAdminMessages(
+          selectedConversation
+        );
       }
+
+    }else{
+
+      loadCustomerMessages();
 
     }
 
