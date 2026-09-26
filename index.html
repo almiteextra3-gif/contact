@@ -1394,7 +1394,7 @@ async function login(event){
     const data = await api("/login",{
       method:"POST",
       body:JSON.stringify({
-        username: username,
+        login: username
         password: password
       })
     });
